@@ -1,7 +1,7 @@
 from google import genai
 
 # 1. Inisialisasi Client dengan API Key Anda yang baru dibuat
-client = genai.Client(api_key="AIzaSyB2zhjkdnV3VsX2fyzPpPtj4xXYT4YG8zU")
+client = genai.Client(api_key="iniapikey")
 
 # 2. Kirim pesan ke model Gemini 2.5 Flash (Gratis & Cepat)
 response = client.models.generate_content(
