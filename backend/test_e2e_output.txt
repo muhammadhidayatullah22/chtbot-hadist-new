@@ -1,0 +1,60 @@
+﻿============================================================
+TEST 1: Register new user
+============================================================
+python : Traceback (most 
+recent call last):
+At line:1 char:26
++ .\venv\Scripts\activate; 
+python test_e2e.py 2>&1 | 
+Out-File -Encoding ...
++                          
+~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo           
+   : NotSpecified: (Traceba  
+  ck (most recent call las   
+ t)::String) [], RemoteEx    
+ception
+    + FullyQualifiedErrorId  
+   : NativeCommandError
+ 
+  File "C:\laragon\www\chtbot
+_hadist\backend\test_e2e.py",
+ line 182, in <module>
+    asyncio.run(main())
+  File "C:\Python312\Lib\asyn
+cio\runners.py", line 194, 
+in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\asyn
+cio\runners.py", line 118, 
+in run
+    return self._loop.run_unt
+il_complete(task)
+           ^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\asyn
+cio\base_events.py", line 
+687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\laragon\www\chtbot
+_hadist\backend\test_e2e.py",
+ line 33, in main
+    print(f"  \u274c 
+Register failed: 
+{r.status_code} {r.text}")
+  File "C:\Python312\Lib\enco
+dings\cp1252.py", line 19, 
+in encode
+    return codecs.charmap_enc
+ode(input,self.errors,encodin
+g_table)[0]
+           ^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^
+UnicodeEncodeError: 
+'charmap' codec can't encode 
+character '\u274c' in 
+position 2: character maps 
+to <undefined>

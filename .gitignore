@@ -1,0 +1,29 @@
+# Node
+node_modules/
+dist/
+build/
+.npm/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.env
+.venv/
+*.sqlite3
+*.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+*.pdf
+.agent/
+f/
+
+# IDE
+.vscode/
+.idea/

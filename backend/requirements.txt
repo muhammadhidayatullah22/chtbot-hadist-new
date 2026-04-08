@@ -1,0 +1,33 @@
+# FastAPI
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+
+# Database
+sqlalchemy[asyncio]==2.0.36
+asyncpg==0.30.0
+alembic==1.14.1
+
+# Auth
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+python-multipart==0.0.20
+
+# RAG Pipeline
+chromadb==0.6.3
+langchain==0.3.14
+langchain-community==0.3.14
+pypdf==5.1.0
+
+# Embedding (Ollama)
+httpx==0.28.1
+
+# OpenRouter API
+openai==1.59.3
+
+# Environment
+python-dotenv==1.0.1
+
+# CORS
+pydantic==2.10.4
+pydantic-settings==2.7.1

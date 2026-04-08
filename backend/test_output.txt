@@ -1,0 +1,105 @@
+﻿.\venv\Scripts\python.exe 
+: Failed to send telemetry 
+event ClientStartEvent: 
+capture() takes 1 
+positional argument but 3 
+were given
+At line:1 char:32
++ ... NG='utf-8'; 
+.\venv\Scripts\python.exe 
+test_rag_pipeline.py 2>&1 
+| Out ...
++                 ~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (Fai  
+  led to send ...ut 3 we   
+ re given:String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+≡ƒº¬ RAG Accuracy Pipeline ΓÇö Test Suite
+============================================================
+
+============================================================
+TEST 1: QueryExpander
+============================================================
+
+  Query: 'sholat malam'
+  Expanded: ['salat malam', 'shalat lail', 'qiyam al-lail', 'tahajud', 'qiyamul lail']
+  Γ£à PASS ΓÇö Found expected synonyms
+
+  Query: 'zakat fitrah'
+  Expanded: ['zakat mal fitrah', 'zakat fitri', 'zakat fithrah', 'zakah fitrah', 'zakat fitrah']
+  Γ£à PASS ΓÇö Found expected synonyms
+
+  Query: 'puasa ramadhan'
+  Expanded: ['shiyam ramadhan', 'puasa ramadan', 'puasa ramadhan', 'shaum ramadhan']
+  Γ£à PASS ΓÇö Found expected synonyms
+
+  Query: 'doa setelah adzan'
+  Expanded: ["doa ba'da adzan", 'doa sesudah azan', 'doa wasilah', "du'a setelah adzan", 'doa setelah adzan']
+  Γ£à PASS ΓÇö Found expected synonyms
+
+  Query: 'hukum riba'
+  Expanded: ['hukum bunga', "hukum riba'", 'hukum riba']
+  Γ£à PASS ΓÇö Found expected synonyms
+
+  Result: 5/5 passed
+
+============================================================
+TEST 2: Smart Ranker
+============================================================
+
+  Query: 'sholat tahajud'
+  Input: 3 candidates
+  Output: 2 results
+  Γ£à PASS ΓÇö Low relevance result filtered out
+  Γ£à PASS ΓÇö Chunk with better metadata ranked first
+  Γ£à PASS ΓÇö Score breakdown: {'similarity': 0.7, 'keyword': 1.0, 'metadata': 1.0}
+    [chunk_1] combined=0.850 | sim=0.700 kw=1.000 meta=1.000
+    [chunk_2] combined=0.375 | sim=0.750 kw=0.000 meta=0.000
+
+  Result: PASS
+
+============================================================
+TEST 3: FatwaGuard
+============================================================
+  Γ£à 'apakah musik haram' ΓåÆ sensitive=True level=high (expected: sensitive=True, level=high)
+      matched: ['pattern:apakah\\s+\\w+\\s+(?:halal|haram|', 'haram', 'musik']
+  Γ£à 'hukum riba dalam islam' ΓåÆ sensitive=True level=high (expected: sensitive=True, level=high)
+      matched: ['hukum', 'riba']
+  Γ£à 'fatwa tentang vaksin' ΓåÆ sensitive=True level=high (expected: sensitive=True, level=high)
+      matched: ['fatwa']
+  Γ£à 'boleh tidak pakai cadar' ΓåÆ sensitive=True level=high (expected: sensitive=True, level=high)
+      matched: ['boleh tidak', 'cadar']
+  Γ£à 'hadist tentang puasa senin kamis' ΓåÆ sensitive=False level=none (expected: sensitive=False, level=none)
+  Γ£à 'siapa abu hurairah' ΓåÆ sensitive=False level=none (expected: sensitive=False, level=none)
+  Γ£à 'hadist tentang sholat subuh' ΓåÆ sensitive=False level=none (expected: sensitive=False, level=none)
+  Γ£à 'apakah judi halal' ΓåÆ sensitive=True level=high (expected: sensitive=True, level=high)
+      matched: ['pattern:apakah\\s+\\w+\\s+(?:halal|haram|', 'halal', 'judi']
+  Γ£à 'aurat wanita' ΓåÆ sensitive=True level=moderate (expected: sensitive=True, level=moderate)
+      matched: ['aurat']
+
+  Result: 9/9 passed
+
+============================================================
+TEST 4: Full Pipeline (Integration)
+============================================================
+  Γæá Expanded: ['hadist tentang sholat sholat malam', 'hadist tentang sholat tahajjud', 'hadist tentang solat tahajud', 'hadist tentang sholat tahajud', 'hadist tentang shalat tahajud']
+  Γæí Searching ChromaDB...
+
+  ΓÜá∩╕Å Integration test skipped: All connection attempts failed
+     (This is OK if Ollama/ChromaDB is not running)
+
+============================================================
+≡ƒôè SUMMARY
+============================================================
+  Γ£à QueryExpander: PASS
+  Γ£à SmartRanker: PASS
+  Γ£à FatwaGuard: PASS
+  ΓÅ¡∩╕Å FullPipeline: SKIPPED
+
+≡ƒÄë All tests passed!

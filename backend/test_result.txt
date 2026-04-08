@@ -1,0 +1,4 @@
+============================================================
+TEST 1: Register new user
+============================================================
+  ??? Register failed: 409 {"detail":"Username atau email sudah terdaftar"}
