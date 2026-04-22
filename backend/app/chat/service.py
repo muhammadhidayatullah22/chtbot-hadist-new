@@ -90,7 +90,8 @@ async def generate_chat_response(
     )
 
     # Step 3: Smart Re-ranking
-    contexts = rerank_results(raw_contexts, question, threshold=0.15)[:n_contexts]
+    # Threshold dinaikkan ke 0.25 (sebelumnya 0.15) agar hasil tidak relevan terfilter
+    contexts = rerank_results(raw_contexts, question, threshold=0.25)[:n_contexts]
 
     context_text = build_context_prompt(contexts)
     sources_json = json.dumps([
